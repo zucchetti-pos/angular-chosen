@@ -59,7 +59,7 @@
                                      angular.forEach(children, function(value, key) {
                                           $(value).removeAttr('selected');
                                           if($(value).attr('value') == scope.ngModel[!attrs.searchActiveName?'id':attrs.searchActiveName]){
-                                              $(value).attr('selected','selected');
+                                              $(value).prop( 'selected', 'selected' );
                                               thisActive = '';
                                           }
                                       });
