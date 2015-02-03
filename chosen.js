@@ -28,6 +28,7 @@
                 });
 
                 var chosen = element.data('chosen');
+                chosen.allow_single_deselect = attrs.allowSingleDeselect;
 
                 chosen.dropdown.find('input').on('keyup', function(e)
                 {
