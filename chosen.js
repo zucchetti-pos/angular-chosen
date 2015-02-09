@@ -30,7 +30,9 @@
                 var chosen = element.data('chosen');
                 chosen.allow_single_deselect = attrs.allowSingleDeselect;
 
-                chosen.dropdown.find('input').on('keyup', function(e)
+                var inputResult = chosen.dropdown.find('input');
+
+                inputResult.on('keyup', function(e)
                 {
                     if (chosen.dropdown.find('li.no-results').length > 0)
                     {
@@ -38,6 +40,22 @@
                         divNoResult.html(divNoResult.html().replace(/[\\"]/g, ''));
                         scope.ngModel = {};
                     }
+                });
+
+                inputResult.bind("mouseup", function(e){
+                    var $input = $(this),
+                        oldValue = $input.val();
+
+                    if (oldValue == "") return;
+
+                    setTimeout(function(){
+                        var newValue = $input.val();
+
+                        if (newValue == ""){
+                            $input.trigger("cleared");
+                            element.trigger('chosen:updated');
+                        }
+                    }, 1);
                 });
 
                 element.on('change', function () {

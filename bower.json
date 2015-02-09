@@ -1,6 +1,6 @@
 {
   "name": "angular-chosen-localytics",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "chosen.js",
   "dependencies": {
     "angular": ">=1.2.0"
