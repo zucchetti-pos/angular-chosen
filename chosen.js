@@ -111,7 +111,12 @@
                         element.on(event[eventNameAlias], function (event) {
                             elementCurrent.unbind('click');
                             elementCurrent.bind("click", function(){
-                                var resultText = $(this.children[0]).children('span').text();
+                                var childrenOne = $(this.children[0]);
+                                if (childrenOne.is('[data-option-array-index]')) {
+                                    return;
+                                }
+
+                                var resultText = childrenOne.children('span').text();
                                 scope.ngModel = scope.ngModel? scope.ngModel : {};
                                 scope.ngModel.name = resultText;
                                 scope.$apply(function () {
